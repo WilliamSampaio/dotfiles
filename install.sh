@@ -12,7 +12,7 @@ apt-get install -y git
 # Add Docker and Docker Compose (Ubuntu based)
 # Uninstall old versions
 echo -e "\n#4: install docker and docker compose\n"
-echo -e "\n#4.1: remove old installations\n"
+echo -e "#4.1: remove old installations\n"
 apt-get remove docker docker-engine docker.io containerd runc
 # Install using the repository
 echo -e "\n#4.2: install deps\n"
@@ -41,4 +41,15 @@ usermod -aG docker $USER
 echo -e "\n#4.7: enable services\n"
 systemctl enable docker.service
 systemctl enable containerd.service
+
+# Add Visual Studio Code
+echo -e "\n#5: install vscode\n"
+apt-get install -y wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
+apt-get install -y apt-transport-https
+apt-get update
+apt-get install -y code # or code-insiders
 
