@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Distro Ubuntu 22.0
 
 sudo apt update
@@ -24,7 +23,7 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 # Install Docker Engine
 sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 # Manage Docker as a non-root user
 sudo groupadd docker
 sudo usermod -aG docker $USER
