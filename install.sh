@@ -71,6 +71,8 @@ rm ~/dbeaver-ce_latest_amd64.deb
 curl https://pyenv.run | bash
 
 # End os Setup
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cp -r "$SCRIPT_DIR"/dotfiles/. ~/
 sudo apt update
 sudo apt full-upgrade -y
 sudo apt autoremove --purge -y
