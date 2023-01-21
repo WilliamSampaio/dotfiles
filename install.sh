@@ -1,55 +1,64 @@
 #!/bin/bash
 
-echo -e "#1: apt update\n"
-apt update
-echo -e "\n#2: apt upgrade -y\n"
-apt upgrade -y
+# Distro Ubuntu 22.0
+
+sudo apt update
+sudo apt upgrade -y
 
 # Add Git
-echo -e "\n#3: apt install -y git\n"
-apt install -y git
+sudo apt install -y git
 
 # Add Docker and Docker Compose (Ubuntu based)
 # Uninstall old versions
-echo -e "\n#4: install docker and docker compose\n"
-echo -e "#4.1: remove old installations\n"
-apt remove docker docker-engine docker.io containerd runc
+sudo apt remove docker docker-engine docker.io containerd runc
 # Install using the repository
-echo -e "\n#4.2: install deps\n"
-apt install -y \
+sudo apt install -y \
     ca-certificates \
     curl \
     gnupg \
     lsb-release
-echo -e "\n#4.3: add gpt key\n"
-mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo -e "\n#4.4: setup repository\n"
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 # Install Docker Engine
-echo -e "\n#4.5: install\n"
-apt update
-apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 # Manage Docker as a non-root user
-echo -e "\n#4.6: setup non-root user\n"
-groupadd docker
-usermod -aG docker $USER
+sudo groupadd docker
+sudo usermod -aG docker $USER
 # newgrp docker
 # Configure Docker to start on boot with systemd
-echo -e "\n#4.7: enable services\n"
-systemctl enable docker.service
-systemctl enable containerd.service
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
 
 # Add Visual Studio Code
-echo -e "\n#5: install vscode\n"
-apt install -y wget gpg
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt install -y wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 rm -f packages.microsoft.gpg
-apt install -y apt-transport-https
-apt update
-apt install -y code # or code-insiders
+sudo apt install -y apt-transport-https
+sudo apt update
+sudo apt install -y code # or code-insiders
 
+# Add Vim and Neovim
+sudo apt install -y python3 python3-pip
+pip install pynvim
+curl -fsSL https://deb.nodesource.com/setup_18.13.0 | sudo -E bash - &&\
+sudo apt update
+sudo apt install -y nodejs
+sudo apt install -y vim
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
+sudo apt install -y neovim
+
+# Download and install Nerd Fonts
+mkdir -p ~/.fonts
+curl -fLo ~/.fonts/UbuntuMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/UbuntuMono.zip
+unzip ~/.fonts/UbuntuMono.zip -d ~/.fonts/
+
+#install zsh
+sudo apt install -y zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
