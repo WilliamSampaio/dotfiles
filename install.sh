@@ -58,11 +58,28 @@ mkdir -p ~/.fonts
 curl -fLo ~/.fonts/UbuntuMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/UbuntuMono.zip
 unzip ~/.fonts/UbuntuMono.zip -d ~/.fonts/
 
-#install zsh
+# Install zsh
 sudo apt install -y zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-#install Dbeaver
+# Install Dbeaver
 curl -fLo ~/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
 sudo dpkg -i ~/dbeaver-ce_latest_amd64.deb
 rm ~/dbeaver-ce_latest_amd64.deb
+
+# Install pyenv
+curl https://pyenv.run | bash
+# Setup pyenv on Bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+# Setup pyenv on Z shell
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+# End os Setup
+sudo apt update
+sudo apt full-upgrade -y
+sudo apt autoremove --purge -y
+reboot
