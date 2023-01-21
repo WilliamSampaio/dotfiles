@@ -62,3 +62,8 @@ unzip ~/.fonts/UbuntuMono.zip -d ~/.fonts/
 #install zsh
 sudo apt install -y zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#install Dbeaver
+curl -fLo ~/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+sudo dpkg -i ~/dbeaver-ce_latest_amd64.deb
+rm ~/dbeaver-ce_latest_amd64.deb
