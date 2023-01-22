@@ -45,10 +45,9 @@ sudo apt install -y code # or code-insiders
 # Add Vim and Neovim
 sudo apt install -y python3 python3-pip
 pip install pynvim
-# Install NodeJS
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-source ~/.bashrc
-nvm install --lts
+# Install NodeJS (Don't Use NodeJS!)
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
 # Install Vim and Neovim
 sudo apt install -y vim
 sudo add-apt-repository ppa:neovim-ppa/unstable
