@@ -48,7 +48,7 @@ pip install pynvim
 # Install NodeJS
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 source ~/.bashrc
-nvm install node
+nvm install --lts
 # Install Vim and Neovim
 sudo apt install -y vim
 sudo add-apt-repository ppa:neovim-ppa/unstable
