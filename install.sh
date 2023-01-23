@@ -68,8 +68,11 @@ curl -fLo ~/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_late
 sudo dpkg -i ~/dbeaver-ce_latest_amd64.deb
 rm ~/dbeaver-ce_latest_amd64.deb
 
-# Install pyenv
+# Install Pyenv
 curl https://pyenv.run | bash
+
+# Install Poetry
+curl https://install.python-poetry.org | python -
 
 # End os Setup
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
