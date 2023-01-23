@@ -69,10 +69,16 @@ sudo dpkg -i ~/dbeaver-ce_latest_amd64.deb
 rm ~/dbeaver-ce_latest_amd64.deb
 
 # Install Pyenv
+sudo apt build-dep python3
+sudo apt install -y pkg-config
+sudo apt install -y build-essential gdb lcov pkg-config \
+  libbz2-dev libffi-dev libgdbm-dev libgdbm-compat-dev liblzma-dev \
+  libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev \
+  lzma lzma-dev tk-dev uuid-dev zlib1g-dev
 curl https://pyenv.run | bash
 
 # Install Poetry
-curl https://install.python-poetry.org | python -
+ 
 
 # End os Setup
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
