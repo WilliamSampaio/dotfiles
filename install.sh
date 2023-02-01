@@ -78,7 +78,8 @@ sudo apt install -y build-essential gdb lcov pkg-config \
 curl https://pyenv.run | bash
 
 # Install Poetry
- 
+curl https://install.python-poetry.org | python -
+poetry config virtualenvs.in-project true
 
 # End os Setup
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
