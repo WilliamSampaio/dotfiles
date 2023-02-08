@@ -102,6 +102,7 @@ alias ohmyzsh="n ~/.oh-my-zsh"
 alias l="clear && ls -lah"
 alias n="nvim"
 alias devdir="cd ~/Documentos/dev"
+alias up="sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y"
 
 # Python alias
 alias newenv='python -m venv venv'
