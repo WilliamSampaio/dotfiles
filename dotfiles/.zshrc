@@ -8,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="avit"
+ZSH_THEME="af-magic"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,7 +71,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git virtualenv themes)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,8 +106,8 @@ alias devdir="cd ~/Documentos/dev"
 alias up="sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y"
 
 # Python alias
-alias newenv='python -m venv venv'
-alias active='source venv/bin/activate'
+alias newenv='python -m venv .venv'
+alias active='source .venv/bin/activate'
 alias deactive='deactivate'
 
 if [ -d "$HOME/.local/bin" ] ; then
