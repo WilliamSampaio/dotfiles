@@ -1,3 +1,5 @@
 [user]
     email = 56176702+WilliamSampaio@users.noreply.github.com
     name = William Sampaio
+[core]
+    editor = vim
