@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Distro Ubuntu 22.0
 
 sudo apt update
@@ -6,6 +6,9 @@ sudo apt upgrade -y
 
 # Add Git
 sudo apt install -y git
+
+# Add neofetch
+sudo apt install -y neofetch
 
 # Add Docker and Docker Compose (Ubuntu based)
 # Uninstall old versions
