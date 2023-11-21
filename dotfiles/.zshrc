@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="fino-time"
 
 
 # Set list of themes to pick from when loading at random
@@ -103,7 +103,7 @@ alias ohmyzsh="n ~/.oh-my-zsh"
 alias l="clear && ls -lah"
 alias n="nvim"
 alias dev="cd ~/Documentos/dev"
-alias up="sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y"
+alias up="sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && flatpak update"
 
 # Python alias
 alias newenv='python -m venv .venv'
